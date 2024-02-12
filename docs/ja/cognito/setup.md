@@ -14,7 +14,7 @@ AWS ユーザープールの作成は省略し、アプリクライアントの�
 ### アプリクライアントの設定
 作成後は[アプリクライアントの設定]を開き、有効なIDプロバイダの[Cognito User Pool]にチェックを入れます。
 
-次にコールバックURLに`http://localhost:1337/strapi-plugin-sso/cognito/callback` を入力します。
+次にコールバックURLに`http://localhost:1337/sso/cognito/callback` を入力します。
 
 [許可されている OAuth フロー]の[Authorization code grant]にチェックを入れます。
 
@@ -32,7 +32,7 @@ Cognito側の設定はこれで完了です。
 
 ```javascript
 module.exports = {
-  'strapi-plugin-sso': {
+  'sso': {
     enabled: true,
     config: {
       COGNITO_OAUTH_CLIENT_ID: 作成したCognitoのクライアントID,

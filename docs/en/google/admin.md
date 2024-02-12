@@ -36,7 +36,7 @@ Webhook notifications can be sent the first time a user logs in with a Google ac
 | --- | -- | ---- |
 | GOOGLE_OAUTH_CLIENT_ID | ✅ | - |
 | GOOGLE_OAUTH_CLIENT_SECRET | ✅ | - |
-| COGNITO_OAUTH_REDIRECT_URI | - | http://localhost:1337/strapi-plugin-sso/google/callback |
+| COGNITO_OAUTH_REDIRECT_URI | - | http://localhost:1337/sso/google/callback |
 | GOOGLE_ALIAS | - | - |
 | GOOGLE_GSUITE_HD | - | - |
 

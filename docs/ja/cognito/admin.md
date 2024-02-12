@@ -5,14 +5,14 @@ Googleアカウントの説明と同様です。[リンク](../google/admin.md)�
 
 
 ### 認証の流れ
-プラグインが適切にインストールされている場合、`strapi routes:list |grep strapi-plugin-sso`コマンドを実行すると認証のために必要なパスの一覧を確認できます。
+プラグインが適切にインストールされている場合、`strapi routes:list |grep sso`コマンドを実行すると認証のために必要なパスの一覧を確認できます。
 
-Cognito User Pool連携には`GET  /strapi-plugin-sso/cognito`と`GET /strapi-plugin-sso/cognito/callback`の2つを使用します。
+Cognito User Pool連携には`GET  /sso/cognito`と`GET /sso/cognito/callback`の2つを使用します。
 
-[セットアップ](setup.md)が完了していれば、Webブラウザから`/strapi-plugin-sso/cognito`にアクセスすると既にCognito User Poolを連携することが可能です。
+[セットアップ](setup.md)が完了していれば、Webブラウザから`/sso/cognito`にアクセスすると既にCognito User Poolを連携することが可能です。
 
 ### ユーザーの制限
-Googleアカウント連携と異なり、strapi-plugin-ssoではCognitoのメールアドレスドメインの制御ができません。
+Googleアカウント連携と異なり、ssoではCognitoのメールアドレスドメインの制御ができません。
 
 従って、**Cognitoの設定でアカウント登録をユーザー側に許可しない設定をすることを推奨します。**
 
@@ -34,5 +34,5 @@ Googleアカウント連携と異なり、strapi-plugin-ssoではCognitoのメ�
 | COGNITO_OAUTH_CLIENT_ID | ○ | - |
 | COGNITO_OAUTH_CLIENT_SECRET | ○ | - |
 | COGNITO_OAUTH_DOMAIN | ○ | - |
-| COGNITO_OAUTH_REDIRECT_URI | - | http://localhost:1337/strapi-plugin-sso/cognito/callback |
+| COGNITO_OAUTH_REDIRECT_URI | - | http://localhost:1337/sso/cognito/callback |
 | COGNITO_OAUTH_REGION | - | ap-northeast-1 |

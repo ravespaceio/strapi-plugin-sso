@@ -12,7 +12,7 @@
 
 アプリケーションの種類に[ウェブ アプリケーション]を選択し、[承認済みの JavaScript 生成元]に`http://localhost:1337`を入力します。
 
-[承認済みのリダイレクト URI]にはstrapi-plugin-ssoプラグインのデフォルト値である`http://localhost:1337/strapi-plugin-sso/google/callback` を入力します。
+[承認済みのリダイレクト URI]にはssoプラグインのデフォルト値である`http://localhost:1337/sso/google/callback` を入力します。
 
 上記を入力し、保存するとクライアントIDとクライアントシークレットが発行されるので次のステップで使用します。
 
@@ -22,7 +22,7 @@
 
 ```javascript
 module.exports = {
-  'strapi-plugin-sso': {
+  'sso': {
     enabled: true,
     config: {
       GOOGLE_OAUTH_CLIENT_ID: 作成したGCPのクライアントID,

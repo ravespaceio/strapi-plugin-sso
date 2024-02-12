@@ -28,7 +28,7 @@ This is the same specification as [Google Single Sign On](../google/admin.md).
 | COGNITO_OAUTH_CLIENT_ID | ✅ | - |
 | COGNITO_OAUTH_CLIENT_SECRET | ✅ | - |
 | COGNITO_OAUTH_DOMAIN | ✅ | - |
-| COGNITO_OAUTH_REDIRECT_URI | - | http://localhost:1337/strapi-plugin-sso/cognito/callback |
+| COGNITO_OAUTH_REDIRECT_URI | - | http://localhost:1337/sso/cognito/callback |
 | COGNITO_OAUTH_REGION | - | ap-northeast-1 |
 
 **Please note the default region.**

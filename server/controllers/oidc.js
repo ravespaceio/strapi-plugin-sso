@@ -2,7 +2,7 @@ const axios = require("axios");
 const { v4 } = require('uuid');
 
 const configValidation = () => {
-  const config = strapi.config.get('plugin.strapi-plugin-sso')
+  const config = strapi.config.get('plugin.sso')
   if (config['OIDC_CLIENT_ID'] && config['OIDC_CLIENT_SECRET']
       && config['OIDC_REDIRECT_URI'] && config['OIDC_SCOPES']
       && config['OIDC_TOKEN_ENDPOINT'] && config['OIDC_USER_INFO_ENDPOINT']
@@ -28,8 +28,8 @@ const oidcSignInCallback = async (ctx) => {
   const httpClient = axios.create()
   const userService = strapi.service('admin::user')
   const tokenService = strapi.service('admin::token')
-  const oauthService = strapi.plugin('strapi-plugin-sso').service('oauth')
-  const roleService = strapi.plugin('strapi-plugin-sso').service('role')
+  const oauthService = strapi.plugin('sso').service('oauth')
+  const roleService = strapi.plugin('sso').service('role')
 
   if (!ctx.query.code) {
     return ctx.send(oauthService.renderSignUpError(`code Not Found`))

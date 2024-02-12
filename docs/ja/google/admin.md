@@ -1,7 +1,7 @@
 ## strapi-plugin-admin Googleアカウント連携の仕様
 
 ### 管理画面について
-まず、既存のSuper Admin権限を持ったユーザーで管理画面にログインし、 左サイドメニューのstrapi-plugin-ssoを押下します。
+まず、既存のSuper Admin権限を持ったユーザーで管理画面にログインし、 左サイドメニューのssoを押下します。
 
 この設定画面はGoogleアカウントやCognitoユーザープールで初めてログインを行なった時のデフォルトの権限を設定します。
 
@@ -15,11 +15,11 @@
 また、その際は新たにアカウントを作成するわけではないので権限や姓名といった項目は元のアカウントの設定のままになります。（上書きされない）
 
 ### 認証の流れ
-プラグインが適切にインストールされている場合、`strapi routes:list |grep strapi-plugin-sso`コマンドを実行すると認証のために必要なパスの一覧を確認できます。
+プラグインが適切にインストールされている場合、`strapi routes:list |grep sso`コマンドを実行すると認証のために必要なパスの一覧を確認できます。
 
-Googleアカウント連携には`GET  /strapi-plugin-sso/google`と`GET /strapi-plugin-sso/google/callback`の2つを使用します。
+Googleアカウント連携には`GET  /sso/google`と`GET /sso/google/callback`の2つを使用します。
 
-[セットアップ](setup.md)が完了していれば、Webブラウザから`/strapi-plugin-sso/google`にアクセスすると既にGoogleアカウントを連携することが可能です。
+[セットアップ](setup.md)が完了していれば、Webブラウザから`/sso/google`にアクセスすると既にGoogleアカウントを連携することが可能です。
 
 ### 既存のメールアドレスとGoogleのメールアドレスを分けたい場合
 前述の通り、デフォルトの設定ではメールアドレスによってアカウントが紐づいてしまいます。
@@ -30,7 +30,7 @@ Googleアカウント連携には`GET  /strapi-plugin-sso/google`と`GET /strapi
 ```javascript
 module.exports = {
   // ...その他の設定
-  'strapi-plugin-sso': {
+  'sso': {
     enabled: true,
     config: {
       // ...
@@ -42,7 +42,7 @@ module.exports = {
 
 この状態でGoogleアカウント`example@gmail.com`が認証を行なった場合、`example+123@gmail.com` というメールアドレスでStrapiに新規アカウントとして作成されます。
 
-※strapi-plugin-ssoを運用し始めてから設定を変えてしまうと意図せずアカウントが別に出来てしまうため注意して下さい。
+※ssoを運用し始めてから設定を変えてしまうと意図せずアカウントが別に出来てしまうため注意して下さい。
 
 ※新規アカウントは通常のStrapiのパスワードポリシーに従った予測困難なパスワードを自動生成して付与しています。
 
@@ -56,7 +56,7 @@ Strapiの運用環境（本番環境）は基本的に部外者のアクセス�
 ```javascript
 module.exports = {
   // ...その他の設定
-  'strapi-plugin-sso': {
+  'sso': {
     enabled: true,
     config: {
       // ...
@@ -84,7 +84,7 @@ EventsのEntry行のCREATEにチェックを入れて、それ以外の項目に
 | --- | -- | ---- |
 | GOOGLE_OAUTH_CLIENT_ID | ○ | - |
 | GOOGLE_OAUTH_CLIENT_SECRET | ○ | - |
-| COGNITO_OAUTH_REDIRECT_URI | - | http://localhost:1337/strapi-plugin-sso/google/callback |
+| COGNITO_OAUTH_REDIRECT_URI | - | http://localhost:1337/sso/google/callback |
 | GOOGLE_ALIAS | - | - |
 | GOOGLE_GSUITE_HD | - | - |
 
