@@ -41,6 +41,7 @@ async function googleSignInCallback(ctx) {
   const config = configValidation()
   const httpClient = axios.create()
   const userService = strapi.service('admin::user')
+  //const _userService = strapi.service('plugin::users-permissions.user').FunctionName();
   const tokenService = strapi.service('admin::token')
   const oauthService = strapi.plugin('sso').service('oauth')
   const roleService = strapi.plugin('sso').service('role')
@@ -96,6 +97,15 @@ async function googleSignInCallback(ctx) {
         defaultLocale,
         roles
       )
+
+      strapi.entityService.create('plugin::users-permissions.user', {
+        data: {
+          username: 'Strapi user',
+          email: 'user@strapi.io',
+          password: 'strapiPassword',
+        }
+      })
+
       jwtToken = await tokenService.createJwtToken(activateUser)
 
       // Trigger webhook
