@@ -98,13 +98,18 @@ async function googleSignInCallback(ctx) {
         roles
       )
 
-      strapi.entityService.create('plugin::users-permissions.user', {
-        data: {
-          username: 'Strapi user',
-          email: 'user@strapi.io',
-          password: 'strapiPassword',
-        }
-      })
+      let user = await strapi.plugins['users-permissions'].services.user.add({
+        blocked: false,
+        confirmed: true, 
+        username: 'new_username',
+        email: 'test@testemail.com',
+        password: 'secretpassword', //will be hashed automatically
+        provider: 'local', //provider
+        created_by: 1, //user admin id
+        updated_by: 1, //user admin id
+        role: 1 //role id
+      });
+      console.log("sso plugin")
 
       jwtToken = await tokenService.createJwtToken(activateUser)
 
