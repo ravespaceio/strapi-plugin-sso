@@ -98,18 +98,20 @@ async function googleSignInCallback(ctx) {
         roles
       )
 
-      let user = await strapi.plugins['users-permissions'].services.user.add({
-        blocked: false,
-        confirmed: true, 
-        username: 'new_username',
-        email: 'test@testemail.com',
-        password: 'secretpassword', //will be hashed automatically
-        provider: 'local', //provider
-        created_by: 1, //user admin id
-        updated_by: 1, //user admin id
-        role: 1 //role id
-      });
+      // let user = await strapi.plugins['users-permissions'].services.user.add({
+      //   blocked: false,
+      //   confirmed: true, 
+      //   username: 'new_username',
+      //   email: 'test@testemail.com',
+      //   password: 'secretpassword', //will be hashed automatically
+      //   provider: 'local', //provider
+      //   created_by: 1, //user admin id
+      //   updated_by: 1, //user admin id
+      //   role: 1 //role id
+      // });
       console.log("sso plugin")
+
+      const add_user_state = await strapi.services['api::user-state.user-state'].create({data: {email: email, data: { "miniGame1": true }}});
 
       jwtToken = await tokenService.createJwtToken(activateUser)
 
