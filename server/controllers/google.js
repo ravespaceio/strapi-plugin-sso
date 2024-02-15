@@ -103,7 +103,7 @@ async function googleSignInCallback(ctx) {
       const create_user_state = await strapi.entityService.create('api::user-state.user-state', {
         data: {
           email: 'My Article',
-        },
+        }
       });
 
       jwtToken = await tokenService.createJwtToken(activateUser)
