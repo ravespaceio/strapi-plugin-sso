@@ -102,7 +102,7 @@ async function googleSignInCallback(ctx) {
       console.log("sso plugin creates user")
       const create_user_state = await strapi.entityService.create('api::user-state.user-state', {
         data: {
-          email: 'My Article',
+          email: email
         }
       });
 
