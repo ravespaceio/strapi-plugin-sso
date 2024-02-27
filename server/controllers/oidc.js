@@ -77,6 +77,7 @@ const oidcSignInCallback = async (ctx) => {
       activateUser = dbUser;
       jwtToken = await tokenService.createJwtToken(dbUser)
       
+      
     } else {
       // Register a new account
       const oidcRoles = await roleService.oidcRoles()
@@ -93,11 +94,11 @@ const oidcSignInCallback = async (ctx) => {
         roles,
       )
 
-      // create user in user state collection for minigame data and avatars
+      // create user in user state collection for minigame data and avatarss
       console.log("sso plugin creates users")
       const create_user_state = await strapi.entityService.create('api::user-state.user-state', {
         data: {
-          email: email
+          email: email ? email : 'test@test.de'
         }
       });
 
