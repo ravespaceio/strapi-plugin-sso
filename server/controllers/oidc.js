@@ -93,7 +93,7 @@ const oidcSignInCallback = async (ctx) => {
       )
 
       // create user in user state collection for minigame data and avatars
-      console.log("sso plugin creates user")
+      console.log("sso plugin creates users")
       const create_user_state = await strapi.entityService.create('api::user-state.user-state', {
         data: {
           email: email
